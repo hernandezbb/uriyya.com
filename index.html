@@ -45,7 +45,7 @@
 		<!-- Footer -->
 		<footer id="footer">
 			<ul class="copyright">
-				<li>&copy; Uriyyá - 2018</li>
+				<li>&copy; Uriyyá - <span id="span_Year"></span></li>
 				<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 			</ul>
 		</footer>
@@ -60,6 +60,10 @@
 			});
 			document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
 		}
+
+		var theActualDate = new Date();
+		document.getElementById("span_Year").innerHTML = theActualDate.getFullYear();
+
 	</script>
 
 </body>
