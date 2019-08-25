@@ -1,0 +1,40 @@
+{
+  "name": "uriyya.com",
+  "version": "1.0.0",
+  "description": "Uriyyas website",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-dev": "webpack -dw --config webpack.dev.js",
+    "build": "webpack -p --config webpack.prod.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hernandezbb/uriyya.com.git"
+  },
+  "keywords": [
+    "uriyya"
+  ],
+  "author": "hernandezbb",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hernandezbb/uriyya.com/issues"
+  },
+  "homepage": "https://github.com/hernandezbb/uriyya.com#readme",
+  "devDependencies": {
+    "closure-webpack-plugin": "^2.0.1",
+    "css-loader": "2.1.1",
+    "file-loader": "^4.0.0",
+    "google-closure-compiler": "^20190618.0.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "3.2.0",
+    "mini-css-extract-plugin": "^0.7.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "source-map-loader": "^0.2.4",
+    "style-loader": "0.23.1",
+    "url-loader": "^2.1.0",
+    "webpack": "^4.34.0",
+    "webpack-cli": "^3.3.4",
+    "webpack-merge": "^4.2.1"
+  }
+}
