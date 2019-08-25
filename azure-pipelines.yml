@@ -25,7 +25,7 @@ steps:
       SourceFolder: '$(System.DefaultWorkingDirectory)'
       Contents: |
         !**/node_modules/**
-        'dist/**'
+        '**/dist/**'
       TargetFolder: '$(Build.ArtifactStagingDirectory)'
       OverWrite: true
 
