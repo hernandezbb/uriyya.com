@@ -24,8 +24,10 @@ steps:
     inputs:
       SourceFolder: '$(System.DefaultWorkingDirectory)'
       Contents: |
-        dist\*.*
+        !**/node_modules/**
+        'dist/**'
       TargetFolder: '$(Build.ArtifactStagingDirectory)'
+      OverWrite: true
 
   - task: PublishBuildArtifacts@1
   
