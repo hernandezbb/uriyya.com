@@ -1,14 +1,15 @@
+const path = require('path');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-
-process.env.NODE_ENV = "development";
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = [
   {
     mode: "development",
-    target: "web",
-    devtool: "cheap-module-source-map",
+    devtool: "eval",
     entry: "./src/index.js",
+    devServer: {
+      contentBase: path.resolve(__dirname, 'dist'),
+    },
     output: {
       filename: "index.js",
       path: __dirname + "/dist"
@@ -19,30 +20,26 @@ module.exports = [
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: "src/index.html"
+        filename: 'index.html',
+        inject: true,
+        template: path.resolve(__dirname, 'src', 'index.html'),
       }),
-      new MiniCssExtractPlugin({
-        filename: "bundle.css"
-      })
+      new CleanWebpackPlugin()
     ],
     module: {
       rules: [
         {
-          test: /\.html$/,
-          use: [
-            {
-              loader: "html-loader",
-              options: {
-                minimize: false,
-                removeComments: false,
-                collapseWhitespace: false
-              }
-            }
-          ]
+          test: /\.(js|jsx)$/,
+          exclude: /[\\/]node_modules[\\/]/,
+          use: {
+            loader: 'babel-loader',
+          },
         },
         {
           test: /(\.css)$/,
-          use: [{ loader: MiniCssExtractPlugin.loader }, "css-loader"],
+          use: [
+            'style-loader', 'css-loader',
+          ],
           exclude: /node_modules/
         },
         {
@@ -52,7 +49,7 @@ module.exports = [
               loader: "file-loader",
               options: {
                 outputPath: "images",
-                name: "[path][name].[ext]"
+                name: "[name].[ext]"
               }
             }
           ]
@@ -64,7 +61,7 @@ module.exports = [
               loader: "file-loader",
               options: {
                 outputPath: "fonts",
-                name: "[path][name].[ext]"
+                name: "[name].[ext]"
               }
             }
           ]
